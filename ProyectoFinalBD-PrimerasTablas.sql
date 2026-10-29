@@ -71,3 +71,58 @@ ID_NuevaAveria INT UNIQUE NOT NULL,
 PRIMARY KEY (ID_Averia, ID_NuevaAveria)
 );
 
+ALTER TABLE Profesor 
+ADD CONSTRAINT fk_profesor_usuario FOREIGN KEY (CI_Usuario) 
+REFERENCES Usuario(CI);
+
+ALTER TABLE Asistente 
+ADD CONSTRAINT fk_asistente_usuario FOREIGN KEY (CI_Usuario) 
+REFERENCES Usuario(CI);
+
+ALTER TABLE Estudiante 
+ADD CONSTRAINT fk_estudiante_usuario FOREIGN KEY (CI_Usuario) 
+REFERENCES Usuario(CI);
+
+ALTER TABLE Equipo 
+ADD CONSTRAINT fk_equipo_garantia FOREIGN KEY (CI_Garantia) 
+REFERENCES Usuario(CI);
+
+ALTER TABLE Usan 
+ADD CONSTRAINT fk_usan_usuario FOREIGN KEY (CI_Usuario) 
+REFERENCES Usuario(CI);
+
+ALTER TABLE Usan 
+ADD CONSTRAINT fk_usan_lab FOREIGN KEY (Num_Lab) 
+REFERENCES Lab(Num);
+
+ALTER TABLE Mantener 
+ADD CONSTRAINT fk_mantener_usuario FOREIGN KEY (CI_Usuario) 
+REFERENCES Usuario(CI);
+
+ALTER TABLE Mantener 
+ADD CONSTRAINT fk_mantener_equipo FOREIGN KEY (ID_Equipo) 
+REFERENCES Equipo(ID);
+
+ALTER TABLE Prestamo 
+ADD CONSTRAINT fk_prestamo_usuario FOREIGN KEY (CI_Usuario) 
+REFERENCES Usuario(CI);
+
+ALTER TABLE Prestamo 
+ADD CONSTRAINT fk_prestamo_equipo FOREIGN KEY (ID_Equipo) 
+REFERENCES Equipo(ID);
+
+ALTER TABLE Tiene 
+ADD CONSTRAINT fk_tiene_equipo FOREIGN KEY (ID_Equipo) 
+REFERENCES Equipo(ID);
+
+ALTER TABLE Tiene 
+ADD CONSTRAINT fk_tiene_averia FOREIGN KEY (ID_Averia) 
+REFERENCES Averia(ID);
+
+ALTER TABLE Deriva_en 
+ADD CONSTRAINT fk_deriva_averia FOREIGN KEY (ID_Averia) 
+REFERENCES Averia(ID);
+
+ALTER TABLE Deriva_en 
+ADD CONSTRAINT fk_deriva_nueva_averia FOREIGN KEY (ID_NuevaAveria) 
+REFERENCES Averia(ID);
