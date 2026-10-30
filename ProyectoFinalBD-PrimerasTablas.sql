@@ -127,16 +127,21 @@ ALTER TABLE Deriva_en
 ADD CONSTRAINT fk_deriva_nueva_averia FOREIGN KEY (ID_NuevaAveria) 
 REFERENCES Averia(ID);
 
+
+INSERT INTO Usuario (CI, Nombre, Turno) VALUES 
+(12345678, 'Ana Pérez', 'Matutino'),
+(23456789, 'Juan Gómez', 'Vespertino'),
+(34567890, 'Marcelo Oliver', 'Matutino'),
+(45678901, 'Carlos López', 'Matutino'),
+(56789012, 'Lucía Martínez', 'Vespertino');
+
 INSERT INTO Lab (Num, Equipo) VALUES 
 (1, 'Ceibalita'),
 (2, 'Ceibalita'),
 (3, 'Microbit'),
-(4, 'Ceibalita'),
-(5, 'Coordinacion'),
-(6, 'Microbit'),
-(7, 'Cargadores');
+(4, 'Microbit'),
+(5, 'Cargadores');
 
--- Averías comunes en una UTU
 INSERT INTO Averia (ID, Tipo) VALUES 
 (1, 'Pantalla'),
 (2, 'Cargador'),
@@ -146,17 +151,25 @@ INSERT INTO Averia (ID, Tipo) VALUES
 
 INSERT INTO Profesor (CI_Usuario, Materia) VALUES 
 (12345678, 'Programacion'),
-(23456789, 'Sistemas Op.');
+(23456789, 'Sistemas Op.'),
+(34567890, 'Redes'),
+(45678901, 'Hardware'),
+(56789012, 'Base de Datos');
 
 INSERT INTO Asistente (CI_Usuario, Email) VALUES 
-(34567890, 'marcelo@utu.edu.uy');
+(12345678, 'ana@utu.edu.uy'),
+(23456789, 'juan@utu.edu.uy'),
+(34567890, 'marcelo@utu.edu.uy'),
+(45678901, 'carlos@utu.edu.uy'),
+(56789012, 'lucia@utu.edu.uy');
 
 INSERT INTO Estudiante (CI_Usuario, Grupo) VALUES 
-(45678901, '1BA'),
-(56789012, '2BB'),
-(67890123, '3BD');
+(12345678, '1BA'),
+(23456789, '2BB'),
+(34567890, '3BD'),
+(45678901, '1CC'),
+(56789012, '2DD');
 
--- Equipos realistas: Ceibalitas, Micro:bit, cargadores y mouses
 INSERT INTO Equipo (ID, CI_Garantia, Horario, Categoria) VALUES 
 (101, 12345678, '2026-03-01', 'Ceibalita'),
 (102, 23456789, '2026-03-02', 'Microbit'),
@@ -165,24 +178,43 @@ INSERT INTO Equipo (ID, CI_Garantia, Horario, Categoria) VALUES
 (105, 56789012, '2026-03-05', 'Ceibalita');
 
 INSERT INTO Usan (CI_Usuario, Num_Lab) VALUES 
-(45678901, 1),
-(56789012, 2),
-(67890123, 3);
+(12345678, 1),
+(23456789, 2),
+(34567890, 3),
+(45678901, 4),
+(56789012, 5);
+
 
 INSERT INTO Mantener (CI_Usuario, ID_Equipo) VALUES 
-(34567890, 101),
-(12345678, 102);
+(12345678, 101),
+(23456789, 102),
+(34567890, 103),
+(45678901, 104),
+(56789012, 105);
+
 
 INSERT INTO Prestamo (CI_Usuario, ID_Equipo, FechaI, FechaF) VALUES 
-(45678901, 103, '2026-04-01', '2026-04-01'),
-(56789012, 102, '2026-04-02', '2026-04-02');
+(12345678, 101, '2026-04-01', '2026-04-01'),
+(23456789, 102, '2026-04-02', '2026-04-02'),
+(34567890, 103, '2026-04-03', '2026-04-03'),
+(45678901, 104, '2026-04-04', '2026-04-04'),
+(56789012, 105, '2026-04-05', '2026-04-05');
+
 
 INSERT INTO Tiene (ID_Equipo, ID_Averia) VALUES 
 (101, 1),
 (102, 2),
-(103, 5);
+(103, 3),
+(104, 4),
+(105, 5);
+
 
 INSERT INTO Deriva_en (ID_Averia, ID_NuevaAveria) VALUES 
-(2, 5),
-(1, 4);
+(1, 2),
+(2, 3),
+(3, 4),
+(4, 5),
+(5, 1);
+
+
 
