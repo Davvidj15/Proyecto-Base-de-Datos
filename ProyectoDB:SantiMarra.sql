@@ -157,18 +157,18 @@ INSERT INTO Profesor (CI_Usuario, Materia) VALUES
 (56789012, 'APT');
 
 INSERT INTO Asistente (CI_Usuario, Email) VALUES 
-(12345678, 'ana@utu.edu.uy'),
-(23456789, 'juan@utu.edu.uy'),
-(34567890, 'marcelo@utu.edu.uy'),
-(45678901, 'carlos@utu.edu.uy'),
-(56789012, 'lucia@utu.edu.uy');
+(35545678, 'ana@utu.edu.uy'),
+(23356789, 'juan@utu.edu.uy'),
+(34566890, 'marcelo@utu.edu.uy'),
+(38678901, 'carlos@utu.edu.uy'),
+(44789012, 'lucia@utu.edu.uy');
 
 INSERT INTO Estudiante (CI_Usuario, Grupo) VALUES 
-(12345678, '1BA'),
-(23456789, '2BB'),
-(34567890, '3BD'),
-(45678901, '1CC'),
-(56789012, '2DD');
+(55345678, '2MD'),
+(57456789, '2ME'),
+(57767890, '2MF'),
+(59978901, '2MC'),
+(56789012, '2MB');
 
 INSERT INTO Equipo (ID, CI_Garantia, Horario, Categoria) VALUES 
 (101, 12345678, '10:14-11:30', 'Ceibalita'),
