@@ -171,11 +171,11 @@ INSERT INTO Estudiante (CI_Usuario, Grupo) VALUES
 (56789012, '2DD');
 
 INSERT INTO Equipo (ID, CI_Garantia, Horario, Categoria) VALUES 
-(101, 12345678, '2026-03-01', 'Ceibalita'),
-(102, 23456789, '2026-03-02', 'Microbit'),
-(103, 34567890, '2026-03-03', 'Cargador'),
-(104, 45678901, '2026-03-04', 'Mouse'),
-(105, 56789012, '2026-03-05', 'Ceibalita');
+(101, 12345678, '10:14-11:30', 'Ceibalita'),
+(102, 23456789, '09:30-12:30', 'Microbit'),
+(103, 34567890, '08:00-09:00', 'Cargador'),
+(104, 45678901, '08:20-10:30', 'Mouse'),
+(105, 56789012, '09:04-11:00', 'Ceibalita');
 
 INSERT INTO Usan (CI_Usuario, Num_Lab) VALUES 
 (12345678, 1),
