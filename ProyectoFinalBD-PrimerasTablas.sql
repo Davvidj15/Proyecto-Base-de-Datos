@@ -127,7 +127,6 @@ ALTER TABLE Deriva_en
 ADD CONSTRAINT fk_deriva_nueva_averia FOREIGN KEY (ID_NuevaAveria) 
 REFERENCES Averia(ID);
 
-
 INSERT INTO Usuario (CI, Nombre, Turno) VALUES 
 (12345678, 'Ana Pérez', 'Matutino'),
 (23456789, 'Juan Gómez', 'Vespertino'),
@@ -153,8 +152,8 @@ INSERT INTO Profesor (CI_Usuario, Materia) VALUES
 (12345678, 'Programacion'),
 (23456789, 'Sistemas Op.'),
 (34567890, 'Redes'),
-(45678901, 'APT'),
-(56789012, 'Base de Datos');
+(45678901, 'Matemáticas'),
+(56789012, 'Física');
 
 INSERT INTO Asistente (CI_Usuario, Email) VALUES 
 (12345678, 'ana@utu.edu.uy'),
@@ -184,14 +183,12 @@ INSERT INTO Usan (CI_Usuario, Num_Lab) VALUES
 (45678901, 4),
 (56789012, 5);
 
-
 INSERT INTO Mantener (CI_Usuario, ID_Equipo) VALUES 
 (12345678, 101),
 (23456789, 102),
 (34567890, 103),
 (45678901, 104),
 (56789012, 105);
-
 
 INSERT INTO Prestamo (CI_Usuario, ID_Equipo, FechaI, FechaF) VALUES 
 (12345678, 101, '2026-04-01', '2026-04-01'),
@@ -200,14 +197,12 @@ INSERT INTO Prestamo (CI_Usuario, ID_Equipo, FechaI, FechaF) VALUES
 (45678901, 104, '2026-04-04', '2026-04-04'),
 (56789012, 105, '2026-04-05', '2026-04-05');
 
-
 INSERT INTO Tiene (ID_Equipo, ID_Averia) VALUES 
 (101, 1),
 (102, 2),
 (103, 3),
 (104, 4),
 (105, 5);
-
 
 INSERT INTO Deriva_en (ID_Averia, ID_NuevaAveria) VALUES 
 (1, 2),
