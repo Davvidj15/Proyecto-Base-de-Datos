@@ -1,4 +1,4 @@
-CREATE DATABASE ProyectoDB;
+ CREATE DATABASE ProyectoDB;
 USE ProyectoDB;
 
 CREATE TABLE Usuario (
@@ -126,3 +126,91 @@ REFERENCES Averia(ID);
 ALTER TABLE Deriva_en 
 ADD CONSTRAINT fk_deriva_nueva_averia FOREIGN KEY (ID_NuevaAveria) 
 REFERENCES Averia(ID);
+
+
+INSERT INTO Usuario
+(CI, Nombre, Turno) 
+VALUES
+(45123456, 'Juan Leal',   'Matutino'),
+(47234567, 'Nacho Rodriguez',  'Vespertino'),
+(51345678, 'David Araque',  'Nocturno'),
+(52456789, 'Santiago Marra',    'Matutino'),
+(53567890, 'Tiago Tripaldi',   'Vespertino'),
+(54678901, 'Mateo Silva',  'Matutino'),
+(55789012, 'Sofia Bulla', 'Nocturno'),
+(56890123, 'Rocio Vazquez', 'Vespertino');
+SELECT * FROM Usuario;
+
+INSERT INTO Profesor
+(CI_Usuario, Materia)
+VALUES
+(90123456, 'Matematicas'),
+(89012345, 'Programacion'),
+(78901234, 'APT'),
+(67890123, 'Sistemas Op'),
+(56789012, 'CTS');
+
+INSERT INTO Asistente
+(CI_Usuario, Email)
+VALUES
+(5678321, 'juanasist@gmail.com'),
+(6223456, 'albertoutu@gmail.com'),
+(5436781, 'ibisutudavila@gmail.com'),
+(9875409, 'walterjes10utu@hotmail.com'),
+(4534542, 'darwinrodriguezutu@gmail.com');
+
+INSERT INTO Estudiante
+(CI_Usuario, Grupo)
+VALUES
+(45123456, '2ME'),
+(47234567, '2MD'),
+(51345678, '2MF'),
+(52456789, '2MA'),
+(53567890, '2ME'),
+(54678901, '2MA'),
+(55789012, '2MF'),
+(56890123, '2ME');
+
+
+INSERT INTO Lab
+(Num, Equipo)
+VALUES
+(1, 'Ceibalita'),
+(2, 'Teclados'),
+(3, 'Mouses'),
+(4, 'Microbit'),
+(5, 'Cargadores');
+
+INSERT INTO Equipo 
+(ID, CI_Garantia, Horario, Categoria) 
+VALUES 
+(101, 12345678, '10:10-11:30', 'Ceibalita'),
+(102, 23456789, '09:30-12:30', 'Microbit'),
+(103, 34567890, '08:00-09:00', 'Cargador'),
+(104, 45678901, '08:30-10:30', 'Mouse'),
+(105, 56789012, '09:00-11:00', 'Ceibalita');
+
+
+INSERT INTO Averia
+(ID, Tipo)
+VALUES
+(1, 'Pantalla'),
+(2, 'Cargador'),
+(3, 'Tecla'),
+(4, 'Bateria'),
+(5, 'Pin Carga');
+
+INSERT INTO Usan
+(CI_Usuario, Num_Lab)
+VALUES
+(45123456, 1),
+(47234567, 2),
+(51345678, 1),
+(52456789, 2),
+(53567890, 3),
+(54678901, 4),
+(55789012, 5),
+(56890123, 1);
+
+
+
