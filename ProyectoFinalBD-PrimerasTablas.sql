@@ -153,7 +153,7 @@ INSERT INTO Profesor (CI_Usuario, Materia) VALUES
 (23456789, 'Sistemas Op.'),
 (34567890, 'Redes'),
 (45678901, 'Matemáticas'),
-(56789012, 'Física');
+(56789012, 'APT');
 
 INSERT INTO Asistente (CI_Usuario, Email) VALUES 
 (12345678, 'ana@utu.edu.uy'),
