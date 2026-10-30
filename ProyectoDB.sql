@@ -1,0 +1,136 @@
+DROP DATABASE IF EXISTS ProyectoDB;
+CREATE DATABASE IF NOT EXISTS ProyectoDB;
+USE ProyectoDB;
+
+CREATE TABLE Usuario (
+CI INT PRIMARY KEY UNIQUE NOT NULL,
+Nombre VARCHAR (15) NOT NULL,
+Turno VARCHAR (15) NOT NULL
+);
+
+CREATE TABLE Profesor (
+CI_Usuario INT PRIMARY KEY UNIQUE NOT NULL,
+Materia VARCHAR (12) NOT NULL
+);
+
+CREATE TABLE Asistente (
+CI_Usuario INT PRIMARY KEY UNIQUE NOT NULL,
+Email VARCHAR (20) NOT NULL
+);
+
+CREATE TABLE Estudiante (
+CI_Usuario INT PRIMARY KEY UNIQUE NOT NULL,
+Grupo VARCHAR (5) NOT NULL
+);
+
+CREATE TABLE Lab (
+Num INT PRIMARY KEY UNIQUE NOT NULL,
+Equipo VARCHAR (12) NOT NULL
+);
+
+CREATE TABLE Equipo (
+ID INT PRIMARY KEY UNIQUE NOT NULL,
+CI_Garantia INT UNIQUE NOT NULL,
+Horario DATE NOT NULL,
+Categoria VARCHAR (15) NOT NULL
+);
+
+CREATE TABLE Averia (
+ID INT PRIMARY KEY UNIQUE NOT NULL,
+Tipo VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE Usan (
+CI_Usuario INT UNIQUE NOT NULL,
+Num_Lab INT UNIQUE NOT NULL,
+PRIMARY KEY (CI_Usuario, Num_Lab)
+);
+
+CREATE TABLE Mantener (
+CI_Usuario INT UNIQUE NOT NULL,
+ID_Equipo INT UNIQUE NOT NULL,
+PRIMARY KEY (CI_Usuario, ID_Equipo)
+);
+
+CREATE TABLE Prestamo (
+CI_Usuario INT UNIQUE NOT NULL,
+ID_Equipo INT UNIQUE NOT NULL,
+PRIMARY KEY (CI_Usuario, ID_Equipo),
+FechaI DATE NOT NULL,
+FechaF DATE NOT NULL
+);
+
+CREATE TABLE Tiene (
+ID_Equipo INT UNIQUE NOT NULL,
+ID_Averia INT UNIQUE NOT NULL,
+PRIMARY KEY (ID_Equipo, ID_Averia)
+);
+
+CREATE TABLE Deriva_en (
+ID_Averia INT UNIQUE NOT NULL,
+ID_NuevaAveria INT UNIQUE NOT NULL,
+PRIMARY KEY (ID_Averia, ID_NuevaAveria)
+);
+
+ALTER TABLE Profesor 
+ADD CONSTRAINT fk_profesor_usuario FOREIGN KEY (CI_Usuario) 
+REFERENCES Usuario(CI);
+
+ALTER TABLE Asistente 
+ADD CONSTRAINT fk_asistente_usuario FOREIGN KEY (CI_Usuario) 
+REFERENCES Usuario(CI);
+
+ALTER TABLE Estudiante 
+ADD CONSTRAINT fk_estudiante_usuario FOREIGN KEY (CI_Usuario) 
+REFERENCES Usuario(CI);
+
+ALTER TABLE Equipo 
+ADD CONSTRAINT fk_equipo_garantia FOREIGN KEY (CI_Garantia) 
+REFERENCES Usuario(CI);
+
+ALTER TABLE Usan 
+ADD CONSTRAINT fk_usan_usuario FOREIGN KEY (CI_Usuario) 
+REFERENCES Usuario(CI);
+
+ALTER TABLE Usan 
+ADD CONSTRAINT fk_usan_lab FOREIGN KEY (Num_Lab) 
+REFERENCES Lab(Num);
+
+ALTER TABLE Mantener 
+ADD CONSTRAINT fk_mantener_usuario FOREIGN KEY (CI_Usuario) 
+REFERENCES Usuario(CI);
+
+ALTER TABLE Mantener 
+ADD CONSTRAINT fk_mantener_equipo FOREIGN KEY (ID_Equipo) 
+REFERENCES Equipo(ID);
+
+ALTER TABLE Prestamo 
+ADD CONSTRAINT fk_prestamo_usuario FOREIGN KEY (CI_Usuario) 
+REFERENCES Usuario(CI);
+
+ALTER TABLE Prestamo 
+ADD CONSTRAINT fk_prestamo_equipo FOREIGN KEY (ID_Equipo) 
+REFERENCES Equipo(ID);
+
+ALTER TABLE Tiene 
+ADD CONSTRAINT fk_tiene_equipo FOREIGN KEY (ID_Equipo) 
+REFERENCES Equipo(ID);
+
+ALTER TABLE Tiene 
+ADD CONSTRAINT fk_tiene_averia FOREIGN KEY (ID_Averia) 
+REFERENCES Averia(ID);
+
+ALTER TABLE Deriva_en 
+ADD CONSTRAINT fk_deriva_averia FOREIGN KEY (ID_Averia) 
+REFERENCES Averia(ID);
+
+ALTER TABLE Deriva_en 
+ADD CONSTRAINT fk_deriva_nueva_averia FOREIGN KEY (ID_NuevaAveria) 
+REFERENCES Averia(ID);
+
+
+
+
+
+
+
