@@ -1,5 +1,4 @@
-DROP DATABASE IF EXISTS ProyectoDB;
-CREATE DATABASE IF NOT EXISTS ProyectoDB;
+CREATE DATABASE ProyectoDB;
 USE ProyectoDB;
 
 CREATE TABLE Usuario (
@@ -37,7 +36,7 @@ Categoria VARCHAR (15) NOT NULL
 
 CREATE TABLE Averia (
 ID INT PRIMARY KEY UNIQUE NOT NULL,
-Tipo VARCHAR(10) NOT NULL
+Tipo VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE Usan (
@@ -279,5 +278,10 @@ SELECT Horario, Usuario.Nombre, Categoria
 FROM Equipo
 JOIN Usuario ON Equipo.CI_Garantia = Usuario.CI
 WHERE ID = 104;
+
+SELECT Tipo
+FROM Averia
+JOIN Deriva_en ON Averia.ID = Deriva_en.ID_NuevaAveria
+WHERE Deriva_en.Id_NuevaAveria = 8;
 
 
