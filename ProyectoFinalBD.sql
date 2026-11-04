@@ -1,4 +1,5 @@
-CREATE DATABASE ProyectoDB;
+DROP DATABASE IF EXISTS ProyectoDB;
+CREATE DATABASE IF NOT EXISTS ProyectoDB;
 USE ProyectoDB;
 
 CREATE TABLE Usuario (
@@ -195,7 +196,7 @@ VALUES
 (102, 67890123, '09:00-11:00', 'Ceibalita'),
 (103, 89012345, '09:30-12:30', 'Microbit'),
 (104, 90123456, '08:00-09:00', 'Cargador'),
-(105, 98754091, '08:30-10:30', 'Mouse');
+(105, 98754091, '08:30-10:30', 'Teclado');
 
 INSERT INTO Averia
 (ID, Tipo)
@@ -204,7 +205,11 @@ VALUES
 (2, 'Cargador'),
 (3, 'Tecla'),
 (4, 'Bateria'),
-(5, 'Pin Carga');
+(5, 'Pin de Carga'),
+(6, 'Fuga térmica'),
+(7, 'Membrana'),
+(8, 'Fusible de backlight'),
+(9, 'Chip de carga');
 
 INSERT INTO Usan
 (CI_Usuario, Num_Lab)
@@ -218,7 +223,45 @@ VALUES
 (55789012, 5),
 (56890123, 1);
 
+INSERT INTO Mantener
+(CI_Usuario, ID_Equipo)
+VALUES
+(45345423, 101),
+(54367810, 102),
+(56783219, 103),
+(62234564, 104),
+(98754091, 105);
+
+INSERT INTO Prestamo
+(CI_Usuario, ID_Equipo, FechaI, FechaF)
+VALUES
+(45345423, 101, '2026/03/11', '2026/03/18'),
+(54367810, 102, '2026/05/16', '2026/06/3'),
+(56783219, 103, '2026/08/13', '2026/08/21'),
+(62234564, 104, '2026/07/23', '2026/07/24'),
+(98754091, 105, '2026/11/2', '2026/11/10');
+
+INSERT INTO Tiene
+(ID_Equipo, ID_Averia)
+VALUES
+(101, 2),
+(102, 1),
+(103, 4),
+(104, 5),
+(105, 3);
+
+INSERT INTO Deriva_en
+(ID_Averia, ID_NuevaAveria)
+VALUES
+(1, 8),
+(2, 5),
+(3, 7),
+(4, 6),
+(5, 9);
+
 SELECT * FROM Usuario;
+
+SELECT * FROM Prestamo;
 
 SELECT * FROM Estudiante WHERE Grupo = '2ME';
 
